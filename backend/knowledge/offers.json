@@ -1,0 +1,23 @@
+[
+  {
+    "code": "CODEMODE",
+    "name": "Developer Energy Special",
+    "discount": "15% OFF",
+    "applicable": ["Nitro Silk Cold Brew", "Cloud Iced Americano", "Espresso Tonic"],
+    "description": "15% off cold high-caffeine brews for coding sessions."
+  },
+  {
+    "code": "MORNINGBREW",
+    "name": "Early Bird Combo",
+    "discount": "₹50 OFF",
+    "applicable": ["Midnight Espresso", "Velvet Latte", "Butter Croissant"],
+    "description": "Save ₹50 when pairing any hot coffee with a Butter Croissant before 11 AM."
+  },
+  {
+    "code": "PLANTPOWER",
+    "name": "Free Plant Milk Upgrade",
+    "discount": "FREE UPGRADE",
+    "applicable": ["Oat", "Almond"],
+    "description": "No extra charge for Oat or Almond milk on all espresso drinks."
+  }
+]

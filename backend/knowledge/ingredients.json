@@ -1,0 +1,23 @@
+{
+  "coffee_beans": {
+    "arabica": "100% High-Altitude Single Origin Arabica Beans from Ethiopia and Colombia. Medium-Dark Roast.",
+    "espresso_blend": "Signature blend of 80% Arabica and 20% Highland Robusta for rich crema and dark chocolate notes."
+  },
+  "milk_types": {
+    "dairy": "Whole Milk (3.5% fat) or Skimmed Milk sourced locally.",
+    "oat": "Oatly Barista Edition — 100% plant-based, creamy foam, gluten-free certified.",
+    "almond": "Unsweetened Roasted Almond Milk.",
+    "soy": "Organic Non-GMO Soy Milk."
+  },
+  "syrups_and_sweeteners": {
+    "vanilla": "Organic Madagascar Vanilla Bean extract and cane sugar.",
+    "caramel": "Slow-cooked butter caramel drizzle with sea salt.",
+    "dark_chocolate": "70% Belgian Dark Chocolate Ganache.",
+    "honey": "100% Pure Raw Wildflower Honey."
+  },
+  "tea_leaves": {
+    "matcha": "First-harvest Ceremonial Grade Uji Matcha from Kyoto, Japan.",
+    "earl_grey": "Organic Ceylon Black Tea scented with Cold-Pressed Italian Bergamot Oil.",
+    "hibiscus": "Sun-dried Organic Hibiscus Sabdariffa Petals with Elderberry."
+  }
+}

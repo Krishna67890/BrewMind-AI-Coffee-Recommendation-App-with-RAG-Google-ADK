@@ -1,0 +1,10 @@
+{
+  "allergen_matrix": [
+    { "category": "Dairy", "items": ["Velvet Latte", "Amber Cappuccino", "Mocha Dream", "Flat White", "Vanilla Bean Latte", "Caramel Macchiato", "Irish Cream Coffee", "Iced Caramel Cloud", "Hazelnut Frappe", "Spanish Latte Iced", "Iced Dirty Chai", "Golden Matcha Latte", "London Fog", "Butter Croissant", "Spinach Feta Wrap", "Almond Biscotti", "Espresso Brownie", "New York Cheesecake", "Lemon Drizzle Cake", "Dark Chocolate Tart"] },
+    { "category": "Gluten", "items": ["Truffle Mushroom Toast", "Avocado Sourdough", "Butter Croissant", "Spinach Feta Wrap", "Almond Biscotti", "Espresso Brownie", "New York Cheesecake", "Lemon Drizzle Cake", "Dark Chocolate Tart"] },
+    { "category": "Nuts", "items": ["Hazelnut Frappe", "Almond Biscotti", "Pistachio Macaron"] },
+    { "category": "Eggs", "items": ["Spinach Feta Wrap", "Espresso Brownie", "Lemon Drizzle Cake", "Pistachio Macaron"] }
+  ],
+  "safety_disclaimer": "All drinks and food are prepared in a facility that handles dairy, gluten, nuts, and eggs. Cross-contamination may occur. Please verify with barista for severe allergies.",
+  "dairy_free_guarantee": "When Oat or Almond milk is requested, steam wands and pitchers are sanitized according to strict allergen protocols."
+}

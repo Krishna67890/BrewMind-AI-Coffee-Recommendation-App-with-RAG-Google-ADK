@@ -81,14 +81,41 @@ const GlobalAIAssistant = () => {
   useEffect(() => {
     if (transcript) {
       const cmd = transcript.toLowerCase();
-      // Handle page navigation in GlobalAIAssistant too if needed,
-      // but primarily we want to handle chat if the drawer is open.
+
+      // Global Navigation Commands
+      if (cmd.includes('go to concierge') || cmd.includes('open concierge')) {
+        navigate('/concierge');
+        setIsOpen(false);
+        return;
+      }
+      if (cmd.includes('go to menu') || cmd.includes('show menu')) {
+        navigate('/menu');
+        setIsOpen(false);
+        return;
+      }
+      if (cmd.includes('go to profile') || cmd.includes('my profile')) {
+        navigate('/profile');
+        setIsOpen(false);
+        return;
+      }
+      if (cmd.includes('go to order') || cmd.includes('show cart') || cmd.includes('my order')) {
+        navigate('/order');
+        setIsOpen(false);
+        return;
+      }
+      if (cmd.includes('go home')) {
+        navigate('/');
+        setIsOpen(false);
+        return;
+      }
+
+      // Handle chat if the drawer is open
       if (isOpen) {
         setInput(transcript);
         handleSend(transcript);
       }
     }
-  }, [transcript]);
+  }, [transcript, navigate, isOpen]);
 
   useEffect(() => {
     if (isListening) setVoiceState('LISTENING');

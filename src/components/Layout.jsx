@@ -119,36 +119,6 @@ const Layout = ({ children }) => {
 
       <main className="flex-grow relative">
         {children}
-
-        {/* Global Voice FAB */}
-        {supported && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="fixed bottom-8 right-8 z-[60]"
-          >
-            <button
-              onClick={isListening ? stopListening : startListening}
-              className={`p-4 rounded-full shadow-2xl transition-all ${
-                isListening
-                ? 'bg-red-500 text-white animate-pulse'
-                : 'bg-coffee-950 text-cream-50 hover:bg-coffee-800'
-              }`}
-              title={isListening ? "Listening..." : "Voice Control"}
-            >
-              {isListening ? <MicOff size={24} /> : <Mic size={24} />}
-            </button>
-            {isListening && (
-              <div className="absolute bottom-full right-0 mb-4 w-64 bg-white p-4 rounded-2xl shadow-xl border border-coffee-100 text-xs font-medium text-coffee-600 animate-in fade-in slide-in-from-bottom-2">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Volume2 size={14} className="text-amber-500" />
-                  <span className="text-coffee-950 font-bold">BrewMind Voice active</span>
-                </div>
-                Try: "Go to Concierge", "Show Menu", "My Profile"
-              </div>
-            )}
-          </motion.div>
-        )}
       </main>
 
       {/* Global AI Concierge Floating Button & Assistant Drawer across all routes */}

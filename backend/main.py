@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from brewmind_agent.agent import BrewMindAgent
-from brewmind_agent.schemas import ChatRequest, ComparisonRequest, OrderPreviewRequest
+from brewmind_agent.schemas import ChatRequest, ComparisonRequest, OrderPreviewRequest, KnowledgeSearchRequest
 
 app = FastAPI(
     title="BrewMind AI Concierge Backend",
@@ -68,11 +68,36 @@ async def order_preview(request: OrderPreviewRequest):
     subtotal = sum((agent.rag.get_product_details(i.id)['price'] * i.quantity) for i in request.items if agent.rag.get_product_details(i.id))
     return {"subtotal": subtotal, "total": subtotal * 1.05}
 
+@app.post("/api/knowledge/search")
+async def search_knowledge(request: KnowledgeSearchRequest):
+    try:
+        context, sources = agent.rag.retrieve_relevant_knowledge(request.query)
+        products = agent.rag.search_menu(request.query)
+        return {
+            "success": True,
+            "query": request.query,
+            "count": len(products),
+            "retrieved_documents": sources,
+            "matching_products": products,
+            "context_snippet": context[:500]
+        }
+    except Exception as e:
+        print(f"Search Error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.get("/api/product/{product_id}")
 async def get_product(product_id: str):
     p = agent.rag.get_product_details(product_id)
     if not p: raise HTTPException(status_code=404)
     return p
+
+@app.get("/api/sources/{source_id}")
+async def get_source(source_id: str):
+    try:
+        content = agent.rag.get_source_content(source_id)
+        return {"id": source_id, "content": content}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn

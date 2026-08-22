@@ -361,7 +361,7 @@ const SmartOrder = () => {
               </div>
               <div className="flex justify-between text-sm text-coffee-600">
                 <span>GST (5%)</span>
-                <span>₹{backendPreview ? backendPreview.tax.toFixed(2) : tax.toFixed(2)}</span>
+                <span>₹{(backendPreview?.tax ?? tax).toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm text-coffee-600">
                 <span>Store Pickup</span>
@@ -377,7 +377,7 @@ const SmartOrder = () => {
 
               <div className="pt-4 border-t border-coffee-100 flex justify-between items-center">
                 <span className="text-base font-bold text-coffee-950">Total</span>
-                <span className="text-2xl font-bold text-coffee-950">₹{backendPreview ? backendPreview.total.toFixed(2) : total.toFixed(2)}</span>
+                <span className="text-2xl font-bold text-coffee-950">₹{(backendPreview?.total ?? total).toFixed(2)}</span>
               </div>
 
               <button

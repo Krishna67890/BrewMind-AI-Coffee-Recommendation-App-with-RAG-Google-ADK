@@ -6,7 +6,7 @@
 
 const RENDER_URL = 'https://brewmind-ai-coffee-recommendation-app.onrender.com';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || RENDER_URL;
-console.log('🚀 BrewMind AI Connecting to:', API_BASE_URL);
+console.log('BrewMind AI Connecting to:', API_BASE_URL);
 
 class AgentApi {
   /**

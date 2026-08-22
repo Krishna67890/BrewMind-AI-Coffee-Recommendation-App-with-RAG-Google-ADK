@@ -23,3 +23,7 @@ class OrderItem(BaseModel):
 
 class OrderPreviewRequest(BaseModel):
     items: List[OrderItem]
+
+class KnowledgeSearchRequest(BaseModel):
+    query: str
+    top_k: Optional[int] = 5

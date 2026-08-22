@@ -4,35 +4,29 @@
  * Communicates with the Python Google ADK Agent & RAG Backend on Cloud Run or Local Host.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+const RENDER_URL = 'https://brewmind-ai-coffee-recommendation-app.onrender.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || RENDER_URL;
+console.log('🚀 BrewMind AI Connecting to:', API_BASE_URL);
 
 class AgentApi {
   /**
    * Send a chat message to the BrewMind AI Agent
    */
-  async chat({ message, tasteProfile, mood, budget, dietaryRestrictions, history, persona, cartItems, isDiscovery, previousOrders, pageContext }) {
+  async chat(payload) {
     try {
+      console.log('📡 Sending request to:', `${API_BASE_URL}/api/chat`);
       const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          message,
-          tasteProfile,
-          mood,
-          budget: budget ? parseFloat(budget) : 1000,
-          dietaryRestrictions: dietaryRestrictions || [],
-          history: history || [],
-          persona: persona || 'Classic Barista',
-          cartItems: cartItems || [],
-          isDiscovery: isDiscovery || false,
-          previousOrders: previousOrders || ["Vanilla Caramel Cold Brew"],
-          pageContext: pageContext || 'HOME'
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
+        const errorBody = await response.text();
+        console.error('❌ Server Response Error:', errorBody);
         throw new Error('BrewMind AI is temporarily unavailable.');
       }
 

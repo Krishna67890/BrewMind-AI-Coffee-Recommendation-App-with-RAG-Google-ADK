@@ -1,0 +1,12 @@
+services:
+  # Python Backend Service using Docker
+  - type: web
+    name: brewmind-backend
+    runtime: docker
+    rootDir: backend
+    plan: free # or your preferred plan
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: PORT
+        value: 8080

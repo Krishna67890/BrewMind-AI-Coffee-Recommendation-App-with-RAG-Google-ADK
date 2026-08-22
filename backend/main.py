@@ -17,14 +17,16 @@ app = FastAPI(
 # Enable CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"], # In production, you should list your Vercel and Render domains here
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Initialize ADK Agent & RAG System
-KNOWLEDGE_DIR = os.path.join(os.path.dirname(__file__), "knowledge")
+# Use absolute paths to ensure it works in Docker/Render environments
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
 agent = BrewMindAgent(KNOWLEDGE_DIR)
 
 # Request logging middleware for observability
@@ -195,5 +197,6 @@ async def search_knowledge(request: KnowledgeSearchRequest):
 
 if __name__ == "__main__":
     import uvicorn
+    # Render and Cloud Run provide the PORT environment variable
     port = int(os.environ.get("PORT", 8080))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
